@@ -11,7 +11,6 @@ import SwiftUI
 struct WindSlider : View {
     
     @State var size: CGFloat = 200.0
-//    @State var progress : CGFloat = 0.5
     @Binding var angle: Angle
     
     var sliderWidth: CGFloat = 30
@@ -23,23 +22,6 @@ struct WindSlider : View {
                 .stroke(Color(.gray),style: StrokeStyle(lineWidth: sliderWidth, lineCap: .round, lineJoin: .round))
                 .frame(width:size, height: size)
             
-            // progress....
-            
-//                    Circle()
-//                        .trim(from: 0, to: progress)
-//                        .stroke(Color.green,style: StrokeStyle(lineWidth: 55, lineCap: .butt))
-//                        .frame(width: size, height: size)
-//                        .rotationEffect(.init(degrees: -90))
-            
-            // Inner Finish Curve...
-            
-//                    Circle()
-//                        .fill(Color(.red))
-//                        .frame(width: 55, height: 55)
-////                        .offset(x:90)
-//                        .offset(x: size / 2)
-//                        .rotationEffect(.init(degrees: -90))
-            
             // Drag Circle...
             
             Circle()
@@ -50,11 +32,6 @@ struct WindSlider : View {
             // adding gesture...
                 .gesture(DragGesture().onChanged(onDrag(value:)))
                 .rotationEffect(.init(degrees: -90))
-            
-            // sample $200
-//                    Text("$" + String(format: "%.0f", progress * 200))
-//                        .font(.largeTitle)
-//                        .fontWeight(.heavy)
             
             ArrowView()
                 .frame(width: size / 4, height: size / 1.5)
@@ -85,13 +62,7 @@ struct WindSlider : View {
         // eg = 360 - 176 = 184...
         if _angle < 0{_angle = 360 + _angle}
         
-//        withAnimation(Animation.linear(duration: 0.15)){
-            
-            // progress...
-//            let progress = angle / 360
-//            self.progress = progress
         self.angle = Angle(value: Double(_angle), unit: .degrees)
-//        }
     }
 }
 

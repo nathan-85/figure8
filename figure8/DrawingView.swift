@@ -16,22 +16,15 @@ struct DrawingView: View {
     @State private var offset = CGSize.zero
     @State private var previousOffset = CGSize.zero
     
-    
-
-    
     var body: some View {
-        
-       
         
         let dragGesture = DragGesture()
             .onChanged { value in
                 self.offset = CGSize(width: value.translation.width / CGFloat(magnification) + previousOffset.width, height: value.translation.height / CGFloat(magnification) + previousOffset.height)
-                
             }
             .onEnded { _ in
                 self.previousOffset = self.offset
             }
-        
         
         ZStack {
             
@@ -41,14 +34,11 @@ struct DrawingView: View {
             
             .scaleEffect(CGSize(width: scaleFactor, height: scaleFactor), anchor: .topLeading)
             
-            
             Path { path in
                 path.move(to: model._currentPosition().point)
                 path.addLine(to: Position(radial: model.heading, range: Distance(value: 0.3, unit: .nauticalMiles), fromPosition: model._currentPosition()).point)
             }.strokedPath(StrokeStyle(lineWidth: 50)).foregroundColor(.white)
             .scaleEffect(CGSize(width: scaleFactor, height: scaleFactor), anchor: .topLeading)
-            
-            
             
             Circle().path(in: CGRect(x: 500, y: 100, width: 3124 * scaleFactor, height: 3124 * scaleFactor)).stroke(Color.green,style: StrokeStyle(lineWidth: 1, lineCap: .butt))
         }

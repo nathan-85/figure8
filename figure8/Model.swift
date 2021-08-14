@@ -17,11 +17,8 @@ struct Position {
     var speedUpFactor:Double = 1
     
     static var zero:Position {
-//        return Position(x: Distance.zero, y: Distance.zero)
         return Position(x: Distance(value: 1.38, unit: .nauticalMiles), y: Distance(value: -0.21, unit: .nauticalMiles))
     }
-    
-    
     
     init(x:Distance,y:Distance) {
         self.x = x
@@ -51,8 +48,6 @@ func +=(lhs:inout Position, rhs:Position) {
 class Model: ObservableObject {
     static let shared = Model()
     var speedUpFactor = 1.0
-//    var isUserMovingAircraft = false
-
     
     var positions:[Position] {
         return _positions
@@ -90,7 +85,6 @@ class Model: ObservableObject {
     let maxPositions = 2000
     
     func updatePosition() {
-//        guard !isUserMovingAircraft else { return }
         let v = speed.converted(to: .metersPerSecond).value
         let g = 9.81
         let b = bank.radians
@@ -123,7 +117,7 @@ class Model: ObservableObject {
         let yComp = s * cos(h) + windSpeed * cos(windDirection) * t
         track = atan2(xComp, yComp)
         var currentPos = Position(x: _currentPosition().x + Distance(value:xComp, unit:.meters), y: _currentPosition().y + Distance(value:yComp, unit:.meters))
-        groundSpeed = Speed(value: pow(pow(windSpeed,2.0) + pow(v,2) - 2 * windSpeed * v * cos(Angle(value: oldHeading, unit:.radians) - windDirection + Angle(value: 180, unit: .degrees)),0.5), unit: .metersPerSecond) //* (1 +
+        groundSpeed = Speed(value: pow(pow(windSpeed,2.0) + pow(v,2) - 2 * windSpeed * v * cos(Angle(value: oldHeading, unit:.radians) - windDirection + Angle(value: 180, unit: .degrees)),0.5), unit: .metersPerSecond)
          let groundSpeed2 = Speed(value: currentPos.distanceTo(_currentPosition()).converted(to: .nauticalMiles).value / Measurement<UnitDuration>(value: t, unit: .seconds).converted(to: .hours).value, unit: .knots)
         print((groundSpeed - groundSpeed2).converted(to: .knots))
         currentPos.speedUpFactor = speedUpFactor

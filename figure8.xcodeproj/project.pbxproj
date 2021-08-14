@@ -35,6 +35,7 @@
 		98A46C022670BFB4002A7A78 /* WindSpeedSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WindSpeedSlider.swift; path = figure8/WindSpeedSlider.swift; sourceTree = "<group>"; };
 		98A46C042670D482002A7A78 /* AngleOfBankSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AngleOfBankSlider.swift; path = figure8/AngleOfBankSlider.swift; sourceTree = "<group>"; };
 		98F9B72B26C7FA0100A89228 /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
+		98F9B72D26C7FFD500A89228 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 		98A46BDE26709089002A7A78 = {
 			isa = PBXGroup;
 			children = (
+				98F9B72D26C7FFD500A89228 /* README.md */,
 				98F9B72A26C7F9D600A89228 /* Images */,
 				98A46C022670BFB4002A7A78 /* WindSpeedSlider.swift */,
 				98A46C042670D482002A7A78 /* AngleOfBankSlider.swift */,

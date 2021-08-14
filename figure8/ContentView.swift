@@ -31,10 +31,8 @@ struct ContentView: View {
     
     var body: some View {
         
-        let factor = 0.0//(cos(-1 * model.heading + model.windDirection - Angle(value: 180, unit: .degrees)) * model.windSpeed.value)/20
-        
-//        let bank = min(70, (cos(model.heading - model.windDirection)-1) * 5.5 + 45)
-        
+        let factor = 0.0
+                
         ZStack(alignment: .bottom) {
             
             DrawingView(points: model.positions, magnification: Double(magnifyBy))
